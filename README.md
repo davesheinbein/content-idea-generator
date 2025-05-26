@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Content Idea Generator
+
+Generate creative content ideas for any industry or keyword, powered by AI (OpenRouter), Google Trends, and Ubersuggest.
+
+## Features
+
+- Generate content ideas using AI (Llama 3 via OpenRouter)
+- Fetch trending keywords from Google Trends and Ubersuggest
+- Combine multiple sources for richer idea generation
+- Save and schedule ideas to your calendar
+- Modern UI with Next.js, React, and Tailwind CSS
+
+## Demo
+
+[GitHub Repository](https://github.com/davesheinbein/content-idea-generator.git)
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Firebase Firestore (for saving ideas)
+- OpenRouter (Llama 3) for AI idea generation
+- Google Trends API
+- Ubersuggest API (via RapidAPI)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/davesheinbein/content-idea-generator.git
+cd content-idea-generator
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root directory and add the following:
+
+```
+NEXT_PUBLIC_RAPIDAPI_KEY=your_rapidapi_key
+OPENROUTER_API_KEY=your_openrouter_api_key
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
+NEXT_PUBLIC_FIREBASE_USE_EMULATOR=false
+```
+
+> Replace the values with your actual API keys and Firebase config.
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Enter a keyword and select an industry.
+2. Choose a source (Ubersuggest, Google Trends, OpenRouter, or All).
+3. Click "Generate Ideas" to get a list of content ideas.
+4. Save or copy ideas as needed.
+5. View and schedule ideas in the calendar.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `/src/app` - Next.js app pages and layout
+- `/src/components` - React UI components
+- `/src/utils` - API integration and utility functions
+- `/src/lib` - Firebase and Firestore setup
+- `/src/pages/api` - API routes for idea generation and saving
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+MIT
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

@@ -31,6 +31,11 @@ export async function fetchKeywords(
 	});
 
 	if (!response.ok) {
+		console.error(
+			'Ubersuggest API error:',
+			response.status,
+			response.statusText
+		);
 		throw new Error(
 			`Keyword fetch failed: ${response.status} ${response.statusText}`
 		);
@@ -38,8 +43,26 @@ export async function fetchKeywords(
 
 	const data: UbersuggestResponse = await response.json();
 
+	console.log('Ubersuggest raw API response:', data);
+
+	// Try to extract keywords from common alternative shapes if data.keywords is missing
+	let keywords: string[] = [];
+	if (Array.isArray(data.keywords)) {
+		keywords = data.keywords;
+	} else if (Array.isArray((data as any).results)) {
+		// Some APIs return an array of objects with a 'keyword' property
+		keywords = (data as any).results
+			.map((item: any) => item.keyword)
+			.filter(Boolean);
+	} else if (
+		(data as any).data &&
+		Array.isArray((data as any).data.keywords)
+	) {
+		keywords = (data as any).data.keywords;
+	}
+
 	// Improved: Deduplicate, trim, lowercase, and filter out empty keywords
-	return (data.keywords || [])
+	return (keywords || [])
 		.map((k) => k.trim().toLowerCase())
 		.filter((k) => k.length > 0)
 		.filter((k, i, arr) => arr.indexOf(k) === i);
