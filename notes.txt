@@ -1,0 +1,158 @@
+Project Breakdown — Content Idea Generator
+
+📂 1️⃣ Project Setup
+ Install Node 18.18.0+
+
+ npx create-next-app@latest content-idea-generator
+
+TypeScript: Yes
+
+ESLint: Yes
+
+Tailwind CSS: Yes
+
+src directory: Yes
+
+App Router: Yes
+
+Turbopack: No
+
+Custom import alias: No
+
+2️⃣ Install Dependencies
+ npm install firebase
+
+ npm install react-calendar
+
+ npm install axios (for API requests)
+
+ (Optional) npm install @headlessui/react @heroicons/react
+
+3️⃣ Firebase Setup
+ Create Firebase project in console
+
+ Enable Firestore Database
+
+ Get Firebase config keys
+
+ Create firebase.ts in /src/lib/ or /src/utils/
+(with typed config and Firestore export)
+
+4️⃣ Keyword + Idea Generator Logic
+ Use a public or freemium keyword API
+
+Ubersuggest (via RapidAPI)
+
+Google Trends (unofficial APIs)
+
+ Create a service file keywordService.ts for fetching keyword data
+
+ Build light AI prompt logic (map keywords to idea templates)
+
+Ex: "10 Ways to {keyword} in {industry}"
+
+5️⃣ Core Pages
+ / → Landing page with form:
+
+Industry dropdown
+
+Keyword input
+
+Generate ideas button
+
+ /ideas → Display list of generated content ideas
+
+Option to save idea to Firestore
+
+ /calendar → Calendar UI for scheduling ideas
+
+Use react-calendar
+
+Mark scheduled ideas
+
+6️⃣ UI Components (in /src/components/)
+ Header.tsx
+
+ IdeaCard.tsx
+
+ IdeaForm.tsx (Industry + Keyword input + Generate button)
+
+ CalendarView.tsx
+
+ IdeaList.tsx
+
+ (Optional) SaveNotification.tsx
+
+7️⃣ Firestore Collections
+ideas
+
+id
+
+content
+
+keyword
+
+industry
+
+scheduledDate
+
+createdAt
+
+8️⃣ Firebase Logic
+ addIdea() — Add generated idea to Firestore
+
+ getIdeas() — Fetch ideas from Firestore
+
+ scheduleIdea() — Update scheduledDate on an idea doc
+
+9️⃣ SEO + Meta Setup
+ Add metadata for shareable landing page
+
+ Next SEO config (if needed)
+
+🔟 Deployment (Free Tier)
+ Deploy via Vercel (connect to GitHub repo)
+
+🚀 11️⃣ Resale-Ready Optimizations
+ Clean white-label UI (swapable branding via config file)
+
+ Configurable Firebase keys
+
+ Modular components for easy customization
+
+ Simple license check logic (optional)
+
+🧩 Final File Structure (Simplified)
+bash
+Copy
+Edit
+/src
+  /components
+    CalendarView.tsx
+    Header.tsx
+    IdeaCard.tsx
+    IdeaForm.tsx
+    IdeaList.tsx
+  /lib
+    firebase.ts
+    keywordService.ts
+  /app
+    /ideas
+      page.tsx
+    /calendar
+      page.tsx
+    page.tsx
+  /styles
+    globals.css
+  /utils
+    ideaTemplates.ts
+🔥 Bonus Ideas (1-Day Features)
+Copy idea button
+
+Auto-generate image with title overlay via canva API or placeholder image API
+
+CSV export of scheduled ideas
+
+Light/dark mode toggle
+
+Emoji mood tags for ideas
