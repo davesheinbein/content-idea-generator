@@ -12,6 +12,8 @@ Generate creative content ideas for any industry or keyword, powered by AI (Open
 
 ## Demo
 
+[Live App](https://content-idea-generator.vercel.app/)
+
 [GitHub Repository](https://github.com/davesheinbein/content-idea-generator.git)
 
 ## Tech Stack
